@@ -1,0 +1,34 @@
+{
+	"name": "larso/core",
+	"description": "Core of Larso Package",
+	"license": "MIT",
+	"autoload": {
+		"psr-4": {
+			"Larso\\": "src"
+		},
+		"files": [
+            "src/helpers.php"
+        ]
+	},
+	"require": {
+		"php": "^7.3|^8.0",
+		"ext-json": "*",
+		"intervention/image": "*",
+        "phpmailer/phpmailer": "*",
+        "symfony/var-dumper": "*",
+        "symfony/error-handler": "*",
+        "symfony/console": "*",
+        "illuminate/support": "*",
+        "illuminate/container": "*",
+        "illuminate/collections": "*",
+        "illuminate/filesystem": "*",
+        "illuminate/database": "*",
+        "illuminate/pagination": "*",
+        "illuminate/view": "*",
+        "illuminate/events": "*",
+        "illuminate/config": "*",
+        "illuminate/http": "*"
+	},
+	"minimum-stability": "dev",
+	"prefer-stable": true
+}
