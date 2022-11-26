@@ -27,6 +27,8 @@
         "illuminate/view": "*",
         "illuminate/events": "*",
         "illuminate/config": "*",
+        "illuminate/cache": "*",
+        "illuminate/routing": "*",
         "illuminate/http": "*"
 	},
 	"minimum-stability": "dev",
