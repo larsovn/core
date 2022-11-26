@@ -13,15 +13,6 @@ composer require larso/core
 
 require 'vendor/autoload.php';
 
-/*
-|--------------------------------------------------------------------------
-| Boot Website
-|--------------------------------------------------------------------------
-|
-| This action will startup all service require for website working
-| If missing this is website down
-|
-*/
 Site::bootApp([
 	'base'    => __DIR__,
 	'storage' => __DIR__.'/storage'
