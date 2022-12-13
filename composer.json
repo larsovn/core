@@ -29,7 +29,8 @@
         "illuminate/config": "*",
         "illuminate/cache": "*",
         "illuminate/routing": "*",
-        "illuminate/http": "*"
+        "illuminate/http": "*",
+        "illuminate/validation": "*"
 	},
 	"minimum-stability": "dev",
 	"prefer-stable": true
