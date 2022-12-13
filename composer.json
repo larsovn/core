@@ -1,19 +1,19 @@
 {
-	"name": "larso/core",
-	"description": "Core of Larso Package",
-	"license": "MIT",
-	"autoload": {
-		"psr-4": {
-			"Larso\\": "src"
-		},
-		"files": [
+    "name": "larso/core",
+    "description": "Core of Larso Package",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Larso\\": "src"
+        },
+        "files": [
             "src/helpers.php"
         ]
-	},
-	"require": {
-		"php": "^7.3|^8.0",
-		"ext-json": "*",
-		"intervention/image": "*",
+    },
+    "require": {
+        "php": "^7.3|^8.0",
+        "ext-json": "*",
+        "intervention/image": "*",
         "phpmailer/phpmailer": "*",
         "symfony/var-dumper": "*",
         "symfony/error-handler": "*",
@@ -31,7 +31,7 @@
         "illuminate/routing": "*",
         "illuminate/http": "*",
         "illuminate/validation": "*"
-	},
-	"minimum-stability": "dev",
-	"prefer-stable": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
