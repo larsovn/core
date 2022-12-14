@@ -8,6 +8,7 @@ use Illuminate\Contracts\Cache\Store;
 use Illuminate\Filesystem\Filesystem;
 use Larso\Http\RequestServiceProvider;
 use Illuminate\View\ViewServiceProvider;
+use Larso\Http\ValidatorServiceProvider;
 use Larso\Session\SessionServiceProvider;
 use Illuminate\Contracts\Cache\Repository;
 use Larso\Database\DatabaseServiceProvider;
@@ -65,11 +66,7 @@ class Site
         $laravel->register(RequestServiceProvider::class);
         $laravel->register(ViewServiceProvider::class);
         $laravel->register(DatabaseServiceProvider::class);
-
-        // $laravel->register(ErrorServiceProvider::class);
-        // $laravel->register(HashServiceProvider::class);
-        // $laravel->register(HttpServiceProvider::class);
-        // $laravel->register(ValidationServiceProvider::class);
+        $laravel->register(ValidatorServiceProvider::class);
 
         $laravel->boot();
 
@@ -100,18 +97,18 @@ class Site
     {
         return new ConfigRepository([
             'app' => [
-                'timezone' => 'Asia/Ho_Chi_Minh'
+                'timezone' => 'Asia/Ho_Chi_Minh',
             ],
             'view' => [
                 'paths' => [
-                    static::$paths->base.'/views'
+                    static::$paths->base . '/views',
                 ],
-                'compiled' => static::$paths->storage.'/views',
+                'compiled' => static::$paths->storage . '/views',
             ],
             'session' => [
                 'lifetime' => 120,
-                'files' => static::$paths->storage.'/sessions',
-                'cookie' => 'session'
+                'files' => static::$paths->storage . '/sessions',
+                'cookie' => 'session',
             ],
         ]);
     }
@@ -131,7 +128,7 @@ class Site
         $container->alias('cache.store', Repository::class);
 
         $container->singleton('cache.filestore', function () {
-            return new FileStore(new Filesystem(), static::$paths->storage.'/cache');
+            return new FileStore(new Filesystem(), static::$paths->storage . '/cache');
         });
         $container->alias('cache.filestore', Store::class);
     }
