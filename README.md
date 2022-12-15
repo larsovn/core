@@ -47,6 +47,12 @@ Request::all();
 File::allFiles('dir-path')
 ```
 
+- Cache
+
+```
+Cache::put('key', 'value');
+```
+
 - Session
 
 ```
@@ -57,16 +63,16 @@ Session::all()
 
 ```
 $validate = Validator::make($request->all(), [
-	'name' => 'required|min:3',
-	'age'  => 'required|numeric'
+ 'name' => 'required|min:3',
+ 'age'  => 'required|numeric'
 ], [
-	'name.required' => ':attribute not null',
-	'name.min'      => ':attribute short',
-	'age.numeric'   => ':attribute is number'
+ 'name.required' => ':attribute not null',
+ 'name.min'      => ':attribute short',
+ 'age.numeric'   => ':attribute is number'
 ]);
 
 dd(
-	$validate->errors()->all(),
-	$validate->fails(),
+ $validate->errors()->all(),
+ $validate->fails(),
 );
 ```
