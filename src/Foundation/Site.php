@@ -11,6 +11,12 @@ class Site
      */
     public static function bootApp(string $basePath)
     {
+        // Create cache folder because laravel require it for boot app
+        $cacheDir = $basePath . '/bootstrap/cache';
+        if (! is_dir($cacheDir)) {
+            mkdir($cacheDir, 0777, true);
+        }
+
         (new static())->bootLaravel($basePath);
     }
 
@@ -73,9 +79,9 @@ class Site
         }
 
         foreach ($values as $key => $value) {
-			config([
-				"database.connections.mysql.$key" => $value,
-			]);
+            config([
+                "database.connections.mysql.$key" => $value,
+            ]);
         }
     }
 }
