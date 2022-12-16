@@ -66,23 +66,16 @@ class Site
             throw new \RuntimeException('values require is array and not blank');
         }
 
-        $arrayKey = [
-            'username', 'password', 'database',
-        ];
-
-        //
         if (Arr::isList($values)) {
-            foreach ($arrayKey as $key => $segment) {
-                config([
-                    "database.connections.mysql.{$segment}" => $values[$key],
-                ]);
-            }
-        } else {
-            foreach ($arrayKey as $segment) {
-                config([
-                    "database.connections.mysql.{$segment}" => Arr::get($values, $segment),
-                ]);
-            }
+            throw new \InvalidArgumentException(
+                '[values] is array Assoc'
+            );
+        }
+
+        foreach ($values as $key => $value) {
+			config([
+				"database.connections.mysql.$key" => $value,
+			]);
         }
     }
 }
