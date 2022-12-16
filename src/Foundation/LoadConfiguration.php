@@ -126,7 +126,7 @@ class LoadConfiguration extends BaseLoadConfiguration
     {
         // config path
         $configFiles = [
-            'default' => __DIR__ . '/config.php',
+            'default' => dirname(__DIR__) . '/config_default.php',
             'public' => base_path('config.php'),
         ];
 
