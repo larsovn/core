@@ -13,66 +13,23 @@ composer require larso/core
 ```
 // index.php
 
+use Larso\Foundation\Site;
+
 require 'vendor/autoload.php';
 
-Site::bootApp([
- 'base'    => __DIR__,
- 'storage' => __DIR__.'/storage'
+Site::bootApp(__DIR__);
+```
+
+### DB info connect
+
+```
+Site::setDatabase([
+ 'username' => 'root',
+ 'password' => '',
+ 'database' => 'db'
 ]);
 ```
 
 ## Supported
 
-- Database (Eloquent)
-
-```
-DB::table('table')->get();
-```
-
-- View (Blade)
-
-```
-View::make('view-path', $data);
-```
-
-- Request
-
-```
-Request::all();
-```
-
-- Filesystem
-
-```
-File::allFiles('dir-path')
-```
-
-- Cache
-
-```
-Cache::put('key', 'value');
-```
-
-- Session
-
-```
-Session::all()
-```
-
-- Validation
-
-```
-$validate = Validator::make($request->all(), [
- 'name' => 'required|min:3',
- 'age'  => 'required|numeric'
-], [
- 'name.required' => ':attribute not null',
- 'name.min'      => ':attribute short',
- 'age.numeric'   => ':attribute is number'
-]);
-
-dd(
- $validate->errors()->all(),
- $validate->fails(),
-);
-```
+almost Laravel

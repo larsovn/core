@@ -1,59 +1,59 @@
 <?php
 
-namespace Larso\Foundation;
+return [
+    'app' => [
+        'timezone' => 'Asia/Ho_Chi_Minh',
+        'asset_url' => base_path('assets'),
+    ],
+    'database' => [
+        'default' => 'mysql',
+        'connections' => [
+            'mysql' => [
+                'driver' => 'mysql',
+                'host' => '127.0.0.1',
+                'port' => '3306',
+                'unix_socket' => '',
+                'charset' => 'utf8mb4',
+                'collation' => 'utf8mb4_unicode_ci',
+                'prefix' => '',
+                'prefix_indexes' => true,
+                'strict' => false,
+                'engine' => 'InnoDB ROW_FORMAT=DYNAMIC',
+                'options' => extension_loaded('pdo_mysql') ? array_filter([
+                    PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
+                ]) : [],
+            ],
+        ],
+    ],
+    'view' => [
+        'paths' => [
+            base_path('views'),
+        ],
+        'compiled' => realpath(storage_path('views')),
+    ],
+    'session' => [
+        'driver' => 'file',
+        'lifetime' => 120,
+        'files' => storage_path('sessions'),
+        'cookie' => 'session',
+        'path' => '/',
+        'domain' => env('SESSION_DOMAIN', null),
+        'secure' => env('SESSION_SECURE_COOKIE'),
+    ],
+    'filesystems' => [
+        'default' => 'local',
+        'disks' => [
+            'local' => [
+                'driver' => 'local',
+                'root' => storage_path(),
+            ],
 
-use Illuminate\Support\Arr;
-
-class Config implements \ArrayAccess
-{
-    private $data;
-
-    public function __construct(array $data)
-    {
-        $this->data = $data;
-
-        $this->requireKeys('url');
-    }
-
-    private function requireKeys(...$keys)
-    {
-        foreach ($keys as $key) {
-            if (!array_key_exists($key, $this->data)) {
-                throw new \InvalidArgumentException(
-                    "Configuration is invalid without a $key key"
-                );
-            }
-        }
-    }
-
-    public function inDebugMode(): bool
-    {
-        return $this->data['debug'] ?? false;
-    }
-
-    public function url()
-    {
-        return rtrim($this->data['url'], '/');
-    }
-
-    #[\ReturnTypeWillChange]
-    public function offsetGet($offset)
-    {
-        return Arr::get($this->data, $offset);
-    }
-
-    public function offsetExists($offset): bool
-    {
-        return Arr::has($this->data, $offset);
-    }
-
-    public function offsetSet($offset, $value): void
-    {
-        throw new RuntimeException('The Config is immutable');
-    }
-
-    public function offsetUnset($offset): void
-    {
-        throw new RuntimeException('The Config is immutable');
-    }
-}
+            'public' => [
+                'driver' => 'local',
+                'root' => storage_path('public'),
+                'url' => env('APP_URL') . '/storage',
+                'visibility' => 'public',
+            ],
+        ],
+    ],
+];

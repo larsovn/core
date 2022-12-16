@@ -17,20 +17,8 @@
         "phpmailer/phpmailer": "*",
         "symfony/var-dumper": "*",
         "symfony/error-handler": "*",
-        "symfony/console": "*",
-        "illuminate/support": "*",
-        "illuminate/container": "*",
-        "illuminate/collections": "*",
-        "illuminate/filesystem": "*",
-        "illuminate/database": "*",
-        "illuminate/pagination": "*",
-        "illuminate/view": "*",
-        "illuminate/events": "*",
-        "illuminate/config": "*",
-        "illuminate/cache": "*",
-        "illuminate/routing": "*",
-        "illuminate/http": "*",
-        "illuminate/validation": "*"
+        "vlucas/phpdotenv": "*",
+        "laravel/framework": "^8.83"
     },
     "minimum-stability": "dev",
     "prefer-stable": true
