@@ -19,4 +19,15 @@ class Kernel extends LaravelKernel
         \Illuminate\Foundation\Bootstrap\RegisterProviders::class,
         \Illuminate\Foundation\Bootstrap\BootProviders::class,
     ];
+
+    protected $middleware = [];
+
+    protected $middlewareGroups = [
+        'web' => [
+            \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+            \Illuminate\Session\Middleware\StartSession::class,
+            // \Illuminate\Session\Middleware\AuthenticateSession::class,
+            \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+        ],
+    ];
 }

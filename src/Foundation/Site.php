@@ -49,7 +49,7 @@ class Site
 
         $response = $kernel->handle(
             $request = \Illuminate\Http\Request::capture()
-        );
+        )->send();
 
         $kernel->terminate($request, $response);
     }
