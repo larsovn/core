@@ -20,16 +20,6 @@ require 'vendor/autoload.php';
 Site::bootApp(__DIR__);
 ```
 
-### DB info connect
-
-```
-Site::setDatabase([
- 'username' => 'root',
- 'password' => '',
- 'database' => 'db'
-]);
-```
-
 ## Supported
 
 almost Laravel

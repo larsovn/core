@@ -2,8 +2,6 @@
 
 namespace Larso\Foundation;
 
-use Illuminate\Support\Arr;
-
 class Site
 {
     /**
@@ -11,13 +9,9 @@ class Site
      */
     public static function bootApp(string $basePath)
     {
-        // Create cache folder because laravel require it for boot app
-        $cacheDir = $basePath . '/bootstrap/cache';
-        if (! is_dir($cacheDir)) {
-            mkdir($cacheDir, 0777, true);
-        }
-
         (new static())->bootLaravel($basePath);
+
+        (new static())->createDirMissing();
     }
 
     /**
@@ -61,27 +55,26 @@ class Site
     }
 
     /**
-     * Appends to config database - ['username', 'password', 'database']
+     * Create Dir if missing
      *
-     * @param array $values
      * @return void
      */
-    public static function setDatabase(array $values)
+    protected function createDirMissing()
     {
-        if (! is_array($values) && blank($values)) {
-            throw new \RuntimeException('values require is array and not blank');
-        }
+        $dirs = [
+            base_path('/bootstrap/cache'),
+            config('cache.stores.file.path'),
+            storage_path('framework/views'),
+            config('cache.stores.file.path'),
+            config('session.files'),
+        ];
 
-        if (Arr::isList($values)) {
-            throw new \InvalidArgumentException(
-                '[values] is array Assoc'
-            );
-        }
+        foreach ($dirs as $dir) {
+            if (is_dir($dir)) {
+                continue;
+            }
 
-        foreach ($values as $key => $value) {
-            config([
-                "database.connections.mysql.$key" => $value,
-            ]);
+            mkdir($dir, 0777, true);
         }
     }
 }
