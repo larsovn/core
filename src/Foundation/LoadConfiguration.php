@@ -53,7 +53,7 @@ class LoadConfiguration extends BaseLoadConfiguration
                     if (Arr::isAssoc($value)) {
                         $original[$key] = $this->configNested($value, $original[$key]);
                     } else {
-                        $original[$key] = array_merge($value, $original[$key]);
+                        $original[$key] = array_merge($original[$key], $value);
                     }
                 } else {
                     $original[$key] = $value;
